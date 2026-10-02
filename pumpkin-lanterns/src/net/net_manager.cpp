@@ -318,6 +318,9 @@ namespace {
           strncpy(c.str, p.effect < EFFECT_COUNT ? EFFECT_TABLE[p.effect].name : "", sizeof(c.str) - 1);
           pushCmd(c);
           Command m; m.type = Command::MODE; m.origin = p.nodeId; m.value = p.mode; pushCmd(m);
+          Command sp; sp.type = Command::SPEED; sp.origin = p.nodeId; sp.value = p.speed; pushCmd(sp);
+          Command hu; hu.type = Command::HUE; hu.origin = p.nodeId; hu.value = p.hue; pushCmd(hu);
+          Command ro; ro.type = Command::ROTATE; ro.origin = p.nodeId; ro.value = p.rotate; pushCmd(ro);
         }
       } else if (p.type == PKT_CMD) {
         Command c; c.type = (Command::Type)p.cmdType; c.value = p.cmdValue; c.origin = p.nodeId; c.aux = p.cmdAux;

@@ -68,7 +68,9 @@ namespace {
         if (c.type == 1) { f.close(); i2s_zero_dma_buffer(I2S_NUM_0); s_playing = false; next = c; return true; }
       }
       if (loop && left == 0) { f.seek(w.dataOff); left = w.dataLen; }
-      uint32_t want = min<uint32_t>(sizeof(in), left); want -= want % bps;
+      uint32_t want = min<uint32_t>(sizeof(in), left);
+      want = min<uint32_t>(want, 256u * bps);                  // out[] holds 256 frames x 2 channels
+      want -= want % bps;
       int got = f.read(in, want); if (got <= 0) break;
       left -= got;
       uint16_t frames = got / bps; uint16_t o = 0;

@@ -49,7 +49,7 @@ static uint32_t nextRotate = 0, nextStateTx = 0, nextKeepAlive = 0, keepAliveOff
 
 // ---- scare escalation / alert / idle ---------------------------------------------
 static uint8_t scareLevel = 0;
-static uint32_t lastTriggerAt = 0, alertUntil = 0;
+static uint32_t lastTriggerAt = 0, alertUntil = 0, scareEnvStart = 0, scareEnvDur = 0;
 static int8_t alertDir = 0;
 static bool idle = false;
 static uint32_t idleWakeUntil = 0;
@@ -98,6 +98,7 @@ static void runScare(uint8_t level, bool withSound, uint32_t now) {
   engine.triggerScare(L.effect, L.durationMs);
   if (withSound && L.sound && Audio::available()) Audio::playRandom(SCARE_SOUND_PREFIX);
   scareLevel = level;
+  scareEnvStart = now; scareEnvDur = L.durationMs;   // reactivity envelope so the effect reads "awake" even without the sensor
 }
 
 static void localTrigger(uint32_t now, bool broadcast) {
@@ -283,11 +284,16 @@ void loop() {
   react = max(react, AuxSensors::mic());
   bool alert = (int32_t)(now - alertUntil) < 0;
   if (alert) react = max(react, (float)SCARE_ALERT_FLOOR);
+  if (scareEnvStart) {                                           // command / remote scare: linear decay over the level's duration
+    uint32_t dt = now - scareEnvStart;
+    if (dt >= scareEnvDur) scareEnvStart = 0; else react = max(react, 1.0f - (float)dt / scareEnvDur);
+  }
   engine.setAlertDir(alert ? alertDir : 0);
   engine.setReactivity(on ? react : 0);
   engine.setFleet(Net::slot(), Net::nodesSeen());
   { float w, r, wk, rm; if (Net::weather(w, r, wk, rm)) engine.setWeather(w, r); }
-  if (on && ranger.takeTrigger()) localTrigger(now, SYNC_FOLLOW_SCARE);
+  bool sensorTrig = ranger.takeTrigger();                       // always consume: a daytime trigger must not fire at dusk
+  if (on && sensorTrig) localTrigger(now, SYNC_FOLLOW_SCARE);
   if (on && rotate && !idle && !engine.scareActive() && Net::isLeader() && (int32_t)(now - nextRotate) >= 0) nextEffect(now, true);
   if ((int32_t)(now - nextBrightnessEval) >= 0) { nextBrightnessEval = now + 5000; applyBrightness(); }   // VBUS-driven cap
   { bool want = on && !idle && ambientUser && strlen(AMBIENT_SOUND_PATH) && Audio::hasSound(AMBIENT_SOUND_PATH);
@@ -301,7 +307,10 @@ void loop() {
     bool pulse = (int32_t)(now - keepAliveOff) < 0;
     engine.setKeepAlivePulse(pulse);
     if (!pulse && KEEPALIVE_LOAD_PIN >= 0) digitalWrite(KEEPALIVE_LOAD_PIN, LOW);
-  } else engine.setKeepAlivePulse(false);
+  } else {
+    engine.setKeepAlivePulse(false);
+    if (KEEPALIVE_LOAD_PIN >= 0) digitalWrite(KEEPALIVE_LOAD_PIN, LOW);   // dusk may arrive mid-pulse
+  }
 #endif
 
   // --- render ---
