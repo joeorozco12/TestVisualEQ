@@ -41,6 +41,11 @@ class EffectEngine {
   uint8_t speed() const { return ctx_.speed; }
   uint8_t hue() const { return ctx_.hue; }
   uint16_t seed() const { return ctx_.seed; }
+  void setFleet(uint8_t slot, uint8_t count) { ctx_.slot = slot; ctx_.slotCount = count ? count : 1; }
+  void setAlertDir(int8_t d) { ctx_.alertDir = d; }
+  void setWeather(float wind, float rain) { ctx_.wind = wind; ctx_.rain = rain; }
+  void setText(const char* t) { ctx_.text = t; }
+  float rain() const { return ctx_.rain; }
 
   // Direct access for bench tests / keep-alive pulse
   CRGB* leds() { return leds_; }

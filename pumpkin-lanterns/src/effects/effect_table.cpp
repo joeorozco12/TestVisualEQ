@@ -5,7 +5,7 @@
 // ---- registry: name, render, init, frame ms, reactive ----------------------
 #define FX(name) void fx_##name##_render(EffectCtx&); void fx_##name##_init(EffectCtx&);
 FX(candle) FX(ember) FX(heartbeat) FX(lightning) FX(rainbow) FX(breathe)
-FX(haunted) FX(wipe) FX(sparkle) FX(wakeup) FX(fire) FX(eyes) FX(off)
+FX(haunted) FX(wipe) FX(sparkle) FX(wakeup) FX(fire) FX(eyes) FX(off) FX(chase) FX(text)
 #undef FX
 
 const EffectDef EFFECT_TABLE[] = {
@@ -23,6 +23,8 @@ const EffectDef EFFECT_TABLE[] = {
   { "fire",       fx_fire_render,      fx_fire_init,      35,   true  },
   { "eyes",       fx_eyes_render,      fx_eyes_init,      40,   true  },
   { "off",        fx_off_render,       fx_off_init,       200,  false },
+  { "chase",      fx_chase_render,     fx_chase_init,     20,   true  },   // fleet-wide travelling pulse
+  { "text",       fx_text_render,      fx_text_init,      30,   false },   // 3x5 font scroller (grid)
 };
 const uint8_t EFFECT_COUNT = sizeof(EFFECT_TABLE) / sizeof(EFFECT_TABLE[0]);
 
@@ -40,6 +42,8 @@ uint16_t EffectCtx::xy(uint8_t x, uint8_t y) const {
   uint16_t i = (uint16_t)y * w + x;
   return i < n ? i : n - 1;
 }
+
+uint32_t EffectCtx::slotDelayMs() const { return (uint32_t)slot * SYNC_WAVE_STEP_MS; }
 
 // xorshift16 seeded from ctx.seed + frame so synced nodes draw identical frames
 uint16_t fxRand16(EffectCtx& c) {

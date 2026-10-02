@@ -32,6 +32,7 @@ void fx_eyes_init(EffectCtx& c) { nextBlink = c.now + 2000; blinkEnd = 0; nextGl
 void fx_eyes_render(EffectCtx& c) {
   if (c.now >= nextBlink) { blinkEnd = c.now + 120; nextBlink = c.now + 2000 + (fxRand16(c) % 5000); }
   if (c.now >= nextGlance) { glance = (int8_t)(fxRand8(c, 3)) - 1; nextGlance = c.now + 1200 + (fxRand16(c) % 4000); }
+  if (c.alertDir) glance = c.alertDir;                           // someone tripped a neighbour: look that way
   bool closed = c.now < blinkEnd;
   uint8_t hue = c.reactivity > 0.5f ? 0 : (c.hue ? c.hue : 20);   // red when someone is close
   uint8_t v = 150 + (uint8_t)(c.reactivity * 105);

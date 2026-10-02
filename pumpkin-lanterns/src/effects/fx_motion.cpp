@@ -6,6 +6,7 @@
 void fx_rainbow_init(EffectCtx& c) {}
 void fx_rainbow_render(EffectCtx& c) {
   uint8_t base = (uint8_t)((c.elapsed() * c.speedScale()) / 12);
+  base += (uint8_t)((255 / c.slotCount) * c.slot);       // fleet: each pumpkin a step along the rainbow
   if (c.w) {
     for (uint8_t y = 0; y < c.h; y++)
       for (uint8_t x = 0; x < c.w; x++)
@@ -64,6 +65,7 @@ namespace {
 void fx_lightning_init(EffectCtx& c) { nextStrike = c.now + 1500; strikesLeft = 0; strikeEnd = 0; glow = 0; }
 void fx_lightning_render(EffectCtx& c) {
   uint32_t t = c.elapsed();
+  if (c.frame == 1) nextStrike += c.slotDelayMs();             // fleet: storm rolls down the row
   if (c.now >= nextStrike && strikesLeft == 0) {
     strikesLeft = 2 + fxRand8(c, 5);                         // 2..6 strikes per storm cell
     nextStrike = c.now;

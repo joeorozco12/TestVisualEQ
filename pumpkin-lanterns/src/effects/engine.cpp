@@ -10,6 +10,7 @@ void EffectEngine::begin() {
   ctx_.leds = leds_; ctx_.n = LED_COUNT; ctx_.w = LED_GRID_W; ctx_.h = LED_GRID_H;
   ctx_.serpentine = LED_GRID_SERPENTINE;
   ctx_.speed = 128; ctx_.hue = 0; ctx_.seed = 0xACE1; ctx_.reactivity = 0;
+  ctx_.slot = 0; ctx_.slotCount = 1; ctx_.alertDir = 0; ctx_.wind = 0; ctx_.rain = 0; ctx_.text = TEXT_MESSAGE;
   setBrightness(LED_BRIGHTNESS_DEFAULT);
   FastLED.show();
   LOGI("fx", "engine: %u px, %ux%u, %u effects, cap=%u, budget=%u mA",

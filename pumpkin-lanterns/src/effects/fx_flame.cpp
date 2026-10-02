@@ -13,9 +13,10 @@ void fx_candle_render(EffectCtx& c) {
   uint32_t t = (uint32_t)(c.elapsed() * c.speedScale());
   uint8_t global = inoise8(t / 3, 1000);               // slow wander 0..255
   global = scale8(global, 120) + 110;                   // 110..230
-  if (c.now > candleGustUntil && fxRand8(c, 255) < 2) { // ~1 gust / 2 s @40fps
-    candleGustUntil = c.now + 150 + fxRand8(c, 250);
-    candleGustDepth = 60 + fxRand8(c, 120);
+  uint8_t gustChance = 2 + (uint8_t)(c.wind * 12);      // weather: wind -> more, deeper gusts
+  if (c.now > candleGustUntil && fxRand8(c, 255) < gustChance) {
+    candleGustUntil = c.now + 150 + fxRand8(c, 250) + (uint16_t)(c.wind * 300);
+    candleGustDepth = 60 + fxRand8(c, 120) + (uint8_t)(c.wind * 60);
   }
   if (c.now < candleGustUntil) global = qsub8(global, candleGustDepth);
   uint8_t react = (uint8_t)(c.reactivity * 255);

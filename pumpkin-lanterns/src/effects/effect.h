@@ -18,10 +18,17 @@ struct EffectCtx {
   uint8_t speed;         // 0..255 user param (128 = nominal)
   uint8_t hue;           // 0..255 user param (effects that take a colour)
   uint16_t seed;         // shared across nodes in sync -> identical random sequences
+  uint8_t slot;          // this node's position in the fleet (0..slotCount-1)
+  uint8_t slotCount;     // nodes in the fleet (>=1)
+  int8_t alertDir;       // -1 = something approaching from a lower slot, +1 higher, 0 none
+  float wind;            // 0..1 weather bias (candle gusts)
+  float rain;            // 0..1 weather bias (lightning)
+  const char* text;      // message for the text scroller
 
   uint32_t elapsed() const { return now - t0; }
   uint16_t xy(uint8_t x, uint8_t y) const;   // grid -> index (handles serpentine)
   float speedScale() const { return 0.25f + (speed / 128.0f) * 0.75f; }  // 0.25..1.75
+  uint32_t slotDelayMs() const;   // slot * SYNC_WAVE_STEP_MS
 };
 
 typedef void (*EffectInitFn)(EffectCtx&);
