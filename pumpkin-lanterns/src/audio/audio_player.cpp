@@ -6,7 +6,8 @@
 #include <driver/i2s.h>
 
 namespace {
-  struct Cmd { uint8_t type; char path[64]; };     // 1=play 2=stop
+  struct Cmd { uint8_t type; char path[64]; };     // 1=play 2=stop 3=ambient on 4=ambient off
+  volatile bool s_ambientOn = false; uint32_t s_ambientRetryAt = 0;
   QueueHandle_t s_q = nullptr;
   volatile bool s_playing = false, s_ok = false;
   float s_vol = AUDIO_VOLUME;
@@ -42,7 +43,7 @@ namespace {
 
   // Convert a chunk of PCM to 16-bit unsigned stereo frames for the DAC and push to I2S.
   // Returns true and fills 'next' if interrupted by a new PLAY command.
-  bool playFile(const char* path, Cmd& next) {
+  bool playFile(const char* path, Cmd& next, bool loop = false) {
     File f = SD.open(path);
     if (!f) { snprintf(s_err, sizeof(s_err), "open fail %s", path); LOGW("audio", "%s", s_err); return false; }
     WavInfo w{};
@@ -59,11 +60,14 @@ namespace {
     static uint8_t in[512]; static uint16_t out[512];       // out: 256 frames * 2 ch
     uint32_t left = w.dataLen;
     uint16_t bps = (w.bits / 8) * w.ch;
-    while (left > 0) {
+    while (left > 0 || loop) {
       Cmd c; if (xQueueReceive(s_q, &c, 0) == pdTRUE) {       // interrupt?
         if (c.type == 2) { left = 0; break; }
+        if (c.type == 3) s_ambientOn = true;
+        if (c.type == 4) { s_ambientOn = false; if (loop) { left = 0; break; } }
         if (c.type == 1) { f.close(); i2s_zero_dma_buffer(I2S_NUM_0); s_playing = false; next = c; return true; }
       }
+      if (loop && left == 0) { f.seek(w.dataOff); left = w.dataLen; }
       uint32_t want = min<uint32_t>(sizeof(in), left); want -= want % bps;
       int got = f.read(in, want); if (got <= 0) break;
       left -= got;
@@ -92,7 +96,14 @@ namespace {
   void audioTask(void*) {
     Cmd c;
     for (;;) {
-      if (xQueueReceive(s_q, &c, portMAX_DELAY) != pdTRUE) continue;
+      // Idle: run the ambient loop if enabled and the file exists; otherwise wait for a command.
+      if (s_ambientOn && strlen(AMBIENT_SOUND_PATH) && (int32_t)(millis() - s_ambientRetryAt) >= 0) {
+        Cmd next;
+        if (playFile(AMBIENT_SOUND_PATH, next, true)) c = next;             // interrupted by a PLAY: handle it below
+        else { if (s_ambientOn) s_ambientRetryAt = millis() + 60000; continue; }   // bad/missing file: pause a minute
+      } else if (xQueueReceive(s_q, &c, pdMS_TO_TICKS(500)) != pdTRUE) continue;
+      if (c.type == 3) { s_ambientOn = true; s_ambientRetryAt = 0; continue; }
+      if (c.type == 4) { s_ambientOn = false; continue; }
       while (c.type == 1) { Cmd next; if (!playFile(c.path, next)) break; c = next; }   // chained interrupts, no recursion
     }
   }
@@ -152,6 +163,16 @@ void Audio::play(const char* path) {
   xQueueSend(s_q, &c, 0);
 }
 void Audio::stop() { if (!s_ok) return; Cmd c{2, {0}}; xQueueSend(s_q, &c, 0); }
+void Audio::playRandom(const char* prefix) {
+  if (!s_ok || !prefix) return;
+  uint8_t idx[12], n = 0;
+  for (uint8_t i = 0; i < s_nNames; i++) if (strncasecmp(s_names[i], prefix, strlen(prefix)) == 0) idx[n++] = i;
+  if (n == 0) { LOGW("audio", "no sound matching %s*", prefix); return; }
+  play(s_names[idx[esp_random() % n]]);
+}
+void Audio::setAmbient(bool on) { if (!s_ok) return; Cmd c{(uint8_t)(on ? 3 : 4), {0}}; xQueueSend(s_q, &c, 0); }
+bool Audio::ambientEnabled() { return s_ambientOn; }
+bool Audio::hasSound(const char* path) { for (uint8_t i = 0; i < s_nNames; i++) if (!strcasecmp(s_names[i], path)) return true; return false; }
 bool Audio::isPlaying() { return s_playing; }
 void Audio::setVolume(float v) { s_vol = v < 0 ? 0 : v > 1 ? 1 : v; }
 float Audio::volume() { return s_vol; }

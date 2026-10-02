@@ -7,8 +7,12 @@
 namespace Audio {
   bool begin();                              // mounts SD, installs I2S, starts task. false = audio disabled
   bool available();                          // SD mounted + I2S ok
-  void play(const char* path);               // interrupts anything playing
+  void play(const char* path);               // interrupts anything playing (ambient resumes afterwards)
+  void playRandom(const char* prefix);       // random file whose path starts with prefix (e.g. "/sounds/scare")
   void stop();
+  void setAmbient(bool on);                  // loop AMBIENT_SOUND_PATH whenever nothing else plays
+  bool ambientEnabled();
+  bool hasSound(const char* path);
   bool isPlaying();
   void setVolume(float v);                   // 0..1
   float volume();
