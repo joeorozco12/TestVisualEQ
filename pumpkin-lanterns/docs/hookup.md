@@ -130,6 +130,14 @@ collector/drain ──► 22 Ω 2 W ──► 5 V star      emitter/source ─�
 
 Set `KEEPALIVE_LOAD_PIN 4`. ~230 mA pulse, 0.6 s every 8 s: ~0.1 W average, resistor stays warm.
 
+## 6b. Optional sensors (each off by default in config.h)
+
+| Sensor | Wiring | Enable |
+|---|---|---|
+| Microphone (electret + MAX4466/MAX9814, or analog MEMS) | VCC 3V3, GND, OUT → GPIO35. Output must be biased around 1.65 V (those modules are). Keep leads short, twisted with GND; it sits next to a class-D amp. | `MIC_ENABLED true` |
+| PIR (HC-SR501 class) | VCC 5 V star, GND, OUT → GPIO14 (3.3 V logic out on most modules; check: some pull OUT to VCC → add a 1k/2k divider). Set the module to single-trigger, ~3 s. | `PIR_ENABLED true` |
+| VBUS sense | 5 V star → 100 kΩ → GPIO36 (VP) → 100 kΩ → GND; 100 nF GPIO36 to GND. | `VBUS_SENSE_ENABLED true` |
+
 ## 7. Assembly order inside the pumpkin
 
 ![Assembly cross-section](img/08_assembly.png)

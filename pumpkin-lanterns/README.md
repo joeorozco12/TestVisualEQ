@@ -4,7 +4,25 @@ ESP32 lantern nodes (3–6), each with a 5×5 WS2812B grid inside a pumpkin. Dus
 from NTP + solar position (light-sensor fallback), ultrasonic scare trigger with optional
 WAV playback, WiFi sync / web UI / MQTT, fully standalone when WiFi is absent.
 
-Firmware: PlatformIO, `espressif32@6.9.0` (arduino-esp32 2.0.17). Everything tunable is in
+Firmware: PlatformIO, `espressif32@6.9.0` (arduino-esp32 2.0.17).
+
+**Features**
+
+| Area | What it does |
+|---|---|
+| Effects | 15 table-registered effects: candle, ember, fire, heartbeat, breathe, wakeup, lightning, rainbow, wipe, sparkle, haunted, eyes, chase, text, off. Crossfades, speed/hue, seeded PRNG. |
+| Fleet choreography | Nodes learn their slot from sync beacons; `chase` travels pumpkin-to-pumpkin, `rainbow` is offset per node, `lightning` rolls down the row. |
+| Scare escalation | Repeat visitors inside 60 s climb haunted → eyes → full wakeup + sound (`SCARE_LEVELS`). |
+| Neighbour alert | A triggered node tells the others which direction the walker is coming from; their eyes glance that way and reactivity is pre-armed for 10 s. |
+| Dusk-to-dawn | Solar elevation with hysteresis from NTP + POSIX TZ (DST-proof); LDR/BH1750 fallback with debounce; manual override. |
+| Scenes | Time-of-day table: friendly playlist and no scares at 17:00, haunted at 20:00; default scene without a clock. |
+| Idle sleep | After 30 min without a trigger between 00:00 and 05:00: ember at 40 to stretch the bank; any trigger wakes it. |
+| Weather | Open-Meteo forecast every 30 min: wind deepens candle gusts, rain biases rotation toward lightning. |
+| Proximity | Filtered HC-SR04 with hysteresis + cooldown; optional PIR as a second source; optional microphone envelope drives reactivity. |
+| Audio | SD WAV → I2S DAC → PAM8302; random pick among `scare*.wav`; `ambient.wav` loops while lit and resumes after a scare. |
+| Network | Web UI + JSON API, MQTT with LWT and Home Assistant discovery, UDP sync, OTA, captive-portal provisioning (no per-node build). Fully standalone without WiFi. |
+| Power | Brightness cap + FastLED power limiter; power-bank keep-alive pulse; optional VBUS sense dims automatically under sag. |
+| Robustness | Task watchdog, health flags, loop-overrun and heap warnings, safe defaults everywhere. | Everything tunable is in
 [`include/config.h`](include/config.h); WiFi/MQTT credentials in `include/secrets.h`
 (copy from `secrets.example.h`).
 
@@ -118,4 +136,7 @@ pumpkin-lanterns/
 - MQTT: subscribe `pumpkin/<id>/cmd` and `pumpkin/all/cmd` with JSON like
   `{"effect":"fire"}`, `{"brightness":120}`, `{"mode":"on"|"off"|"auto"}`, `{"scare":true}`, `{"next":true}`, `{"rotate":false}`, `{"volume":60}`, `{"play":"/sounds/x.wav"}`.
   State on `pumpkin/<id>/state` every 30 s; LWT `pumpkin/<id>/status` online/offline.
-- Adding an effect: write `fx_<name>_render(EffectCtx&)` (+ optional `_init`), add one line to `EFFECT_TABLE`, add the name to `EFFECT_PLAYLIST` if it should rotate.
+- MQTT extras: `{"text":"BOO"}`, `{"ambient":false}`, `{"scare":2}` (level 1–3), `{"state":"ON"}` (Home Assistant), `{"portal":true}` (reboot into setup AP).
+- OTA: `pio run -e node -t upload --upload-port pumpkin-<id>.local --upload-flags --auth=<OTA_PASSWORD>`.
+- Provisioning: press BOOT within 1.5 s of power-up and hold ~1 s, join `pumpkin-<id>-setup` (password `pumpkin123`), fill in WiFi + MQTT at http://192.168.4.1/. Also at `/setup` on the LAN. Credentials live in NVS; `secrets.h` is only the compile-time default.
+- Adding an effect: write `fx_<name>_render(EffectCtx&)` (+ optional `_init`), add one line to `EFFECT_TABLE`, add the name to a playlist if it should rotate. `EffectCtx` gives you `slot`/`slotCount`, `reactivity`, `alertDir`, `wind`/`rain`, `text`.

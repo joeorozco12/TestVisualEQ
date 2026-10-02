@@ -18,6 +18,23 @@ Pass each step before wiring the next. Serial monitor at 115200.
 | 8 | `node` | everything, on the bench | force modes from web UI; `scare` button; cover LDR with time unsynced (no WiFi) | all of the above together; reset reason stays `poweron`/`sw` across a night (no `task_wdt`/`brownout`). |
 | 9 | `node` | in the pumpkin | one night outdoors | turns on ~20 min after sunset, off ~15 min before sunrise; still on at dawn means the bank held. Check `heap` in the UI next morning (should not have trended down). |
 
+## Round-2 features (all exercised from the web UI on the full `node` build)
+
+| Feature | How to test | Pass |
+|---|---|---|
+| Escalation | Press **Scare!** three times within 60 s | haunted (no sound) → eyes + sound → full wakeup + sound; `scareLevel` in the UI climbs; waits 60 s → back to level 1 |
+| Neighbour alert | Two nodes; trip one | the other shows `alert`, eyes glance toward the tripped node, reactivity floor visible in candle/ember |
+| Fleet chase | Two or more nodes, effect `chase` | pulse travels low id → high id with ~350 ms steps; `rainbow` hues offset per node |
+| Text | UI text box "BOO", effect `text` | scrolls right-to-left on the grid; strip build just blinks |
+| Scenes | set `SCENE_TABLE` to a time 2 min ahead, watch log | `scene -> friendly` with brightness/scares as configured; Scare! does nothing in a scares-off scene |
+| Idle | temporarily set `IDLE_SLEEP_NO_TRIGGER_MS 60000` and the hour window to now | ember at 40 after a minute; walk up → wakes to scene for 5 min |
+| Weather | watch `wx` log line after WiFi; set `WEATHER_WIND_FULL_KMH 1` to force | candle gusts noticeably deeper; log shows wind/precip |
+| Ambient | put `ambient.wav` in /sounds | loops while lit, stops when dark or idle, resumes after a scare |
+| OTA | `pio run -e node -t upload --upload-port pumpkin-<id>.local --upload-flags --auth=pumpkin` | uploads, reboots, LEDs keep running until the reboot |
+| HA discovery | MQTT broker + Home Assistant | a light entity `pumpkin-<id>` appears with the effect list; on/off maps to force on/off, brightness and effect work |
+| Portal | hold BOOT ~1 s right after power-up | fast-blinking status LED; phone sees `pumpkin-<id>-setup`; sign-in page opens; save → reboots and joins |
+| Mic / PIR / VBUS | enable in config, wire per hookup §6b | `mic` in UI rises with a clap; PIR trips a scare; `vbus` reads within 0.1 V of a meter and the cap drops below 4.6 V |
+
 ## Things that bite
 
 - `FASTLED_RMT_BUILTIN_DRIVER=0` with arduino-esp32 3.x breaks; this project pins platform 6.9.0 on purpose. Do not "update".

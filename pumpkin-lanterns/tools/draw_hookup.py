@@ -359,9 +359,9 @@ def dump_load():
 # --------------------------------------------------------------------------- 7
 def pinmap():
     s = SVG(760, 760, "ESP32 DevKit (30-pin) — pins used by this project")
-    left = [("EN", None), ("VP / 36", None), ("VN / 39", None), ("D34", ("LDR divider", CSIG)), ("D35", None),
+    left = [("EN", None), ("VP / 36", ("VBUS sense ÷2 (opt.)", CSIG)), ("VN / 39", None), ("D34", ("LDR divider", CSIG)), ("D35", ("mic envelope (opt.)", CSIG)),
             ("D32", ("HC-SR04 TRIG", CSIG)), ("D33", ("HC-SR04 ECHO (÷)", CSIG)), ("D25", ("DAC1 → PAM8302 A+", CAUD)),
-            ("D26", ("PAM8302 SD", CSIG)), ("D27", ("LED data → 74AHCT125", CDATA)), ("D14", None), ("D12", ("strap: keep free", "#9ca3af")),
+            ("D26", ("PAM8302 SD", CSIG)), ("D27", ("LED data → 74AHCT125", CDATA)), ("D14", ("PIR out (opt.)", CSIG)), ("D12", ("strap: keep free", "#9ca3af")),
             ("GND", ("GND", CGND)), ("D13", None), ("VIN", ("5 V from star", C5V))]
     right = [("D23", ("µSD MOSI", CSIG)), ("D22", ("I²C SCL (BH1750, opt.)", CSIG)), ("TX0", ("USB serial", "#9ca3af")), ("RX0", ("USB serial", "#9ca3af")),
              ("D21", ("I²C SDA (BH1750, opt.)", CSIG)), ("GND", ("GND", CGND)), ("D19", ("µSD MISO", CSIG)), ("D18", ("µSD SCK", CSIG)),
