@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="16" y="26" font-family="Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" font-weight="bold" fill="#111">0. Power distribution — one star point, every 5 V load fed in parallel</text>
+<rect x="30" y="200" width="170" height="110" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="115.0" y="220" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#111">USB power bank</text>
+<text x="115.0" y="236" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#6b7280">2 A / 2.4 A port</text>
+<polyline points="200,260.5 222,260.5" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="264.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">VBUS (5 V)</text>
+<polyline points="200,285.5 222,285.5" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="289.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GND</text>
+<polyline points="222,260.5 330,260.5" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="222,285.5 330,285.5" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="240" y="215" width="70" height="70" rx="6" fill="#fff" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="275" y="236" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#111">USB cable</text>
+<text x="275" y="250" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#111">≤ 0.5 m</text>
+<text x="275" y="264" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#111">24 AWG pwr</text>
+<rect x="330" y="190" width="70" height="130" rx="6" fill="#fff3c4" stroke="#334155" stroke-width="1.5"/>
+<text x="365" y="215" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#111">STAR</text>
+<text x="365" y="229" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#111">terminal</text>
+<text x="365" y="242" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#111">block</text>
+<polyline points="400,110 400,590" fill="none" stroke="#d62828" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="392" y="100" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="bold" fill="#d62828">5 V bus</text>
+<polyline points="440,110 440,590" fill="none" stroke="#111111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="448" y="100" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#111111">GND bus</text>
+<polyline points="400,260.5 400,260.5" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="400" cy="260.5" r="3.5" fill="#d62828"/>
+<polyline points="400,285.5 440,285.5" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="440" cy="285.5" r="3.5" fill="#111111"/>
+<rect x="640" y="120" width="180" height="72" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="730.0" y="140" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">ESP32 DevKit</text>
+<polyline points="640,159.0 618,159.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="163.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">VIN / 5V</text>
+<polyline points="640,173.0 618,173.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="177.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="400,159.0 618,159.0" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="400" cy="159.0" r="3.5" fill="#d62828"/>
+<polyline points="440,173.0 618,173.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="440" cy="173.0" r="3.5" fill="#111111"/>
+<text x="640" y="206" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">feeds the 3V3 LDO; nothing else hangs on the DevKit 5 V pin</text>
+<rect x="640" y="216" width="180" height="72" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="730.0" y="236" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">74AHCT125</text>
+<polyline points="640,255.0 618,255.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="259.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">VCC (14)</text>
+<polyline points="640,269.0 618,269.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="273.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND (7)</text>
+<polyline points="400,255.0 618,255.0" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="400" cy="255.0" r="3.5" fill="#d62828"/>
+<polyline points="440,269.0 618,269.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="440" cy="269.0" r="3.5" fill="#111111"/>
+<circle cx="560" cy="255.0" r="3.5" fill="#d62828"/>
+<circle cx="560" cy="269.0" r="3.5" fill="#111111"/>
+<polyline points="560,255.0 560.0,258.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="560.0,266.0 560,269.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="548.0,258.0 572.0,258.0" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="548.0,266.0 572.0,266.0" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="576.0" y="266.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#111">100 nF</text>
+<text x="640" y="302" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">ceramic across pins 14/7</text>
+<rect x="640" y="312" width="180" height="72" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="730.0" y="332" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">PAM8302 amp</text>
+<polyline points="640,351.0 618,351.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="355.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">VIN</text>
+<polyline points="640,365.0 618,365.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="369.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="400,351.0 618,351.0" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="400" cy="351.0" r="3.5" fill="#d62828"/>
+<polyline points="440,365.0 618,365.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="440" cy="365.0" r="3.5" fill="#111111"/>
+<circle cx="560" cy="351.0" r="3.5" fill="#d62828"/>
+<circle cx="560" cy="365.0" r="3.5" fill="#111111"/>
+<polyline points="560,351.0 560.0,354.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="560.0,362.0 560,365.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="548.0,354.0 572.0,354.0" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M548.0,365.0 Q560.0,358.0 572.0,365.0" fill="none" stroke="#111" stroke-width="2.5"/>
+<text x="576.0" y="362.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#111">100 µF</text>
+<text x="540.0" y="352.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">+</text>
+<text x="640" y="398" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">electrolytic at the module</text>
+<rect x="640" y="408" width="180" height="72" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="730.0" y="428" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">HC-SR04</text>
+<polyline points="640,447.0 618,447.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="451.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">VCC</text>
+<polyline points="640,461.0 618,461.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="465.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="400,447.0 618,447.0" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="400" cy="447.0" r="3.5" fill="#d62828"/>
+<polyline points="440,461.0 618,461.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="440" cy="461.0" r="3.5" fill="#111111"/>
+<text x="640" y="494" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">5 V only; 3.3 V = short range</text>
+<rect x="640" y="504" width="180" height="72" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="730.0" y="524" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">5×5 WS2812B grid</text>
+<polyline points="640,543.0 618,543.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="547.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">5V</text>
+<polyline points="640,557.0 618,557.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="646" y="561.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="400,543.0 618,543.0" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="400" cy="543.0" r="3.5" fill="#d62828"/>
+<polyline points="440,557.0 618,557.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="440" cy="557.0" r="3.5" fill="#111111"/>
+<circle cx="560" cy="543.0" r="3.5" fill="#d62828"/>
+<circle cx="560" cy="557.0" r="3.5" fill="#111111"/>
+<polyline points="560,543.0 560.0,546.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="560.0,554.0 560,557.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="548.0,546.0 572.0,546.0" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M548.0,557.0 Q560.0,550.0 572.0,557.0" fill="none" stroke="#111" stroke-width="2.5"/>
+<text x="576.0" y="554.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#111">1000 µF</text>
+<text x="540.0" y="544.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">+</text>
+<text x="640" y="590" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">≥ 6.3 V, leads ≤ 2 cm from grid pads</text>
+<text x="30" y="400" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">Rules:</text>
+<text x="30" y="418" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">• one GND for everything (shifter + divider</text>
+<text x="30" y="432" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">  reference the ESP32 GND)</text>
+<text x="30" y="450" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">• never bank + PC USB at the same time</text>
+<text x="30" y="468" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">• grid never through the DevKit's 5 V pin</text>
+<text x="30" y="486" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">• twist each 5 V/GND pair on the way out</text>
+<polyline points="30,540 54,540" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="62" y="544" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">5 V</text>
+<polyline points="30,558 54,558" fill="none" stroke="#111111" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="62" y="562" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+</svg>

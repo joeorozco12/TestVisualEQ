@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420">
+<rect width="820" height="420" fill="#ffffff"/>
+<text x="16" y="26" font-family="Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" font-weight="bold" fill="#111">2. HC-SR04 ultrasonic with ECHO divider (bench_ultrasonic)</text>
+<rect x="30" y="100" width="170" height="220" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="115.0" y="120" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#111">ESP32 DevKit</text>
+<polyline points="200,154.0 222,154.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="158.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">VIN / 5V</text>
+<polyline points="200,198.0 222,198.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="202.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GND</text>
+<polyline points="200,242.0 222,242.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="246.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO32</text>
+<polyline points="200,286.0 222,286.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="290.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO33</text>
+<rect x="620" y="100" width="170" height="220" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="705.0" y="120" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#111">HC-SR04</text>
+<text x="705.0" y="136" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#6b7280">5 V module</text>
+<polyline points="620,168.0 598,168.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="626" y="172.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">VCC</text>
+<polyline points="620,208.0 598,208.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="626" y="212.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">TRIG</text>
+<polyline points="620,248.0 598,248.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="626" y="252.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">ECHO</text>
+<polyline points="620,288.0 598,288.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="626" y="292.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="222,154.0 260,154.0 260,168.0 598,168.0" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="430" y="160.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#d62828">5 V from star</text>
+<polyline points="222,198.0 290,198.0 290,395 560,395 560,288.0 598,288.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="222,242.0 320,242.0 320,208.0 598,208.0" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="470" y="200.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1d4ed8">TRIG ← GPIO32 (3.3 V is a valid high)</text>
+<polyline points="598,248.0 517.0,248.0" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="551.0,248.0 470,248.0" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="517.0" y="242.0" width="34" height="12" rx="0" fill="#fff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="534.0" y="238.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#111">1 kΩ</text>
+<circle cx="470" cy="248.0" r="3.5" fill="#1d4ed8"/>
+<polyline points="470,248.0 420,248.0 420,286.0 222,286.0" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="330" y="278.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1d4ed8">3.33 V to GPIO33</text>
+<polyline points="470,248.0 470.0,304.5" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="470.0,338.5 470,395" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="464.0" y="304.5" width="12" height="34" rx="0" fill="#fff" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="482.0" y="325.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#111">2 kΩ</text>
+<circle cx="470" cy="395" r="3.5" fill="#111111"/>
+<text x="560" y="345" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#6b7280">5 V × 2k/(1k+2k) = 3.33 V</text>
+<text x="560" y="361" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#6b7280">never ECHO → GPIO directly</text>
+<text x="30" y="350" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">Mount 40–100 cm up, under a lip, aimed slightly down at the approach.</text>
+<text x="30" y="366" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">Leads > 1 m: add 100 nF across VCC/GND at the sensor.</text>
+<polyline points="640,52 664,52" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="672" y="56" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">5 V</text>
+<polyline points="640,70 664,70" fill="none" stroke="#111111" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="672" y="74" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="640,88 664,88" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="672" y="92" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">logic signal</text>
+</svg>

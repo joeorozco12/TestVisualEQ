@@ -1,0 +1,8 @@
+.pio/
+.vscode/
+include/secrets.h
+*.wav
+!data/sounds/README.md
+lib/FastLED/
+lib/PubSubClient/
+lib/ArduinoJson/
