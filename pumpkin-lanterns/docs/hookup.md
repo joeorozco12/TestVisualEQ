@@ -4,7 +4,16 @@ Point-to-point for an ESP32 DevKit (30/38-pin WROOM). Build in the order listed;
 matches a bench env in [bringup.md](bringup.md). Pin numbers are ESP32 GPIO numbers, not
 header positions. Use 22 AWG for every 5 V/GND run, 26–28 AWG for signals.
 
+![Whole node at a glance](img/09_overview.png)
+
+![ESP32 DevKit pin map](img/07_esp32_pinmap.png)
+
+SVG sources for every figure are in `docs/img/`; regenerate with `python3 tools/draw_hookup.py && node tools/svg2png.js`.
+
 ## 0. Power distribution (do this first, test with nothing else attached)
+
+![Power star](img/00_power_star.png)
+
 
 ```
 Power bank 2 A port ──USB cable (≤0.5 m, 24 AWG power pair)──┐
@@ -26,6 +35,9 @@ Check: 5.0 V ± 0.2 at the star point under 0.5 A; ESP32 boots (blue status LED 
 
 ## 1. LED grid (bench_leds)
 
+![LED grid through 74AHCT125](img/01_led_shifter.png)
+
+
 ```
 ESP32 GPIO27 ──────────► 74AHCT125 pin 2 (1A)
 GND ───────────────────► 74AHCT125 pin 1 (1OE)       OE is active-low: tie to GND
@@ -42,6 +54,9 @@ grid 5V / GND ◄── 5 V star, 1000 µF across them at the grid
 
 ## 2. Ultrasonic (bench_ultrasonic)
 
+![HC-SR04 with ECHO divider](img/02_ultrasonic.png)
+
+
 ```
 HC-SR04 VCC  ◄── 5 V star        (3.3 V supply gives short range and erratic echoes)
 HC-SR04 GND  ◄── GND
@@ -55,6 +70,9 @@ HC-SR04 ECHO ──► 1 kΩ ──┬──► ESP32 GPIO33
 
 ## 3. Ambient light (bench_light)
 
+![LDR divider and BH1750 alternative](img/03_ldr.png)
+
+
 ```
 3V3 ──► LDR ──┬──► ESP32 GPIO34
               ├── 10 kΩ ──► GND
@@ -66,6 +84,9 @@ HC-SR04 ECHO ──► 1 kΩ ──┬──► ESP32 GPIO33
 - BH1750 instead: VCC 3V3, GND, SDA GPIO21, SCL GPIO22, ADDR open; set `LIGHT_SENSOR_TYPE LIGHT_SENSOR_BH1750`.
 
 ## 4. Audio (bench_audio)
+
+![DAC to PAM8302 and microSD SPI](img/04_audio_sd.png)
+
 
 ```
 ESP32 GPIO25 (DAC1) ──► 1 kΩ ──► PAM8302 A+
@@ -97,6 +118,9 @@ PAM8302 + / − ──► speaker 4–8 Ω  (both leads from the amp; never grou
 
 ## 6. Optional keep-alive dump load
 
+![Dump load MOSFET](img/06_dump_load.png)
+
+
 Only if `bench_power` shows the bank drops out even with LED pulses:
 
 ```
@@ -107,6 +131,9 @@ collector/drain ──► 22 Ω 2 W ──► 5 V star      emitter/source ─�
 Set `KEEPALIVE_LOAD_PIN 4`. ~230 mA pulse, 0.6 s every 8 s: ~0.1 W average, resistor stays warm.
 
 ## 7. Assembly order inside the pumpkin
+
+![Assembly cross-section](img/08_assembly.png)
+
 
 1. Box (IP54 or lidded food container): ESP32 on standoffs, level shifter + resistors on a 3×4 cm perfboard, PAM8302, SD module, screw-terminal star point, silica gel. Cables exit a single grommet at the bottom.
 2. Grid on a plastic plate or in a zip bag, hung from a skewer across the top of the pumpkin so it illuminates the cut-outs from behind. Conformal coat the grid's back first.

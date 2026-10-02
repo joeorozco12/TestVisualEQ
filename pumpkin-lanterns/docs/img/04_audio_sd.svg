@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="1000" height="620" fill="#ffffff"/>
+<text x="16" y="26" font-family="Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" font-weight="bold" fill="#111">4. Audio: DAC1 → PAM8302 → speaker, and µSD on VSPI (bench_audio)</text>
+<rect x="30" y="90" width="190" height="460" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="125.0" y="110" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#111">ESP32 DevKit</text>
+<polyline points="220,145.11111111111111 242,145.11111111111111" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="149.11111111111111" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">VIN / 5V</text>
+<polyline points="220,191.33333333333331 242,191.33333333333331" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="195.33333333333331" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">3V3</text>
+<polyline points="220,237.55555555555554 242,237.55555555555554" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="241.55555555555554" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GND</text>
+<polyline points="220,283.77777777777777 242,283.77777777777777" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="287.77777777777777" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO25 (DAC1)</text>
+<polyline points="220,330.0 242,330.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="334.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO26</text>
+<polyline points="220,376.22222222222223 242,376.22222222222223" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="380.22222222222223" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO5</text>
+<polyline points="220,422.44444444444446 242,422.44444444444446" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="426.44444444444446" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO18</text>
+<polyline points="220,468.6666666666667 242,468.6666666666667" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="472.6666666666667" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO19</text>
+<polyline points="220,514.8888888888889 242,514.8888888888889" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="214" y="518.8888888888889" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">GPIO23</text>
+<rect x="560" y="80" width="180" height="220" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="650.0" y="100" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#111">PAM8302</text>
+<text x="650.0" y="116" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#6b7280">class-D, bridged out</text>
+<polyline points="560,144.0 538,144.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="148.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">VIN</text>
+<polyline points="560,176.0 538,176.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="180.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="560,208.0 538,208.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="212.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">SD</text>
+<polyline points="560,240.0 538,240.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="244.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">A+</text>
+<polyline points="560,272.0 538,272.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="276.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">A−</text>
+<polyline points="740,168.0 762,168.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="734" y="172.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">OUT +</text>
+<polyline points="740,248.0 762,248.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="734" y="252.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#111">OUT −</text>
+<rect x="560" y="360" width="180" height="220" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+<text x="650.0" y="380" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#111">µSD module</text>
+<text x="650.0" y="396" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#6b7280">3.3 V type, no shifter</text>
+<polyline points="560,421.3333333333333 538,421.3333333333333" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="425.3333333333333" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">VCC</text>
+<polyline points="560,448.0 538,448.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="452.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="560,474.6666666666667 538,474.6666666666667" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="478.6666666666667" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">CS</text>
+<polyline points="560,501.33333333333337 538,501.33333333333337" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="505.33333333333337" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">SCK</text>
+<polyline points="560,528.0 538,528.0" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="532.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">MISO</text>
+<polyline points="560,554.6666666666667 538,554.6666666666667" fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="566" y="558.6666666666667" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">MOSI</text>
+<rect x="830" y="194.0" width="14" height="28" rx="2" fill="#e5e7eb" stroke="#334155" stroke-width="1.5"/>
+<polygon points="844,194.0 866,178.0 866,238.0 844,222.0" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+<text x="848" y="254.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#111">4–8 Ω</text>
+<polyline points="762,168.0 830,168.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="762,248.0 830,248.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="770" y="318.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">never ground a speaker lead</text>
+<polyline points="242,145.11111111111111 260,145.11111111111111 260,144.0 538,144.0" fill="none" stroke="#d62828" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="400" y="136.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#d62828">5 V from star</text>
+<circle cx="500" cy="144.0" r="3.5" fill="#d62828"/>
+<circle cx="500" cy="176.0" r="3.5" fill="#111111"/>
+<polyline points="500,144.0 500.0,156.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="500.0,164.0 500,176.0" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="488.0,156.0 512.0,156.0" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M488.0,167.0 Q500.0,160.0 512.0,167.0" fill="none" stroke="#111" stroke-width="2.5"/>
+<text x="516.0" y="164.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#111">100 µF</text>
+<text x="480.0" y="154.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">+</text>
+<polyline points="242,237.55555555555554 290,237.55555555555554 290,176.0 538,176.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="290,176.0 290,448.0 538,448.0" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="242,191.33333333333331 275,191.33333333333331 275,421.3333333333333 538,421.3333333333333" fill="none" stroke="#f77f00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="420" y="413.3333333333333" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#f77f00">3V3</text>
+<polyline points="242,283.77777777777777 330,283.77777777777777 330,240.0 400,240.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="400,240.0 423.0,240.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="457.0,240.0 480,240.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="423.0" y="234.0" width="34" height="12" rx="0" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="440.0" y="230.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#111">1 kΩ</text>
+<polyline points="480,240.0 538,240.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="345" y="264.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280">DAC out, 1.65 V bias; module input is AC-coupled</text>
+<polyline points="538,272.0 520,272.0 520,330 290,330" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="290" cy="330" r="3.5" fill="#111111"/>
+<polyline points="242,330.0 360,330.0 360,208.0 538,208.0" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="430" y="200.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#1d4ed8">SD: low = mute (idle), high while playing</text>
+<polyline points="242,376.22222222222223 380,376.22222222222223 380,474.6666666666667 538,474.6666666666667" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="386" y="469.6666666666667" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="start" font-weight="normal" fill="#1d4ed8">GPIO5</text>
+<polyline points="242,422.44444444444446 400,422.44444444444446 400,501.33333333333337 538,501.33333333333337" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="406" y="496.33333333333337" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="start" font-weight="normal" fill="#1d4ed8">GPIO18</text>
+<polyline points="242,468.6666666666667 420,468.6666666666667 420,528.0 538,528.0" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="426" y="523.0" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="start" font-weight="normal" fill="#1d4ed8">GPIO19</text>
+<polyline points="242,514.8888888888889 440,514.8888888888889 440,554.6666666666667 538,554.6666666666667" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="446" y="549.6666666666667" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="start" font-weight="normal" fill="#1d4ed8">GPIO23</text>
+<text x="560" y="600" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">SPI leads < 10 cm. GPIO5 is a strapping pin: the card's CS pull-up keeps it high at boot.</text>
+<text x="30" y="580" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#6b7280" font-style="italic">Gain pot on the module ≈ ⅓ turn, then AUDIO_VOLUME / web slider.</text>
+<polyline points="800,420 824,420" fill="none" stroke="#d62828" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="832" y="424" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">5 V</text>
+<polyline points="800,438 824,438" fill="none" stroke="#111111" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="832" y="442" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">GND</text>
+<polyline points="800,456 824,456" fill="none" stroke="#f77f00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="832" y="460" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">3V3</text>
+<polyline points="800,474 824,474" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="832" y="478" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">logic signal</text>
+<polyline points="800,492 824,492" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="832" y="496" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#111">audio</text>
+</svg>
