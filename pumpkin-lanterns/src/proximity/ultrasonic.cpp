@@ -105,3 +105,12 @@ void Ultrasonic::simulateTrigger(uint32_t now) {
   lastTrig_ = now; pendingTrig_ = true; trigEnvStart_ = now;
   LOGI("us", "simulated trigger");
 }
+
+void Ultrasonic::externalPresence(bool active, uint32_t now) {
+  static bool was = false;
+  if (active && !was && (now - lastTrig_ >= US_COOLDOWN_MS || lastTrig_ == 0)) {
+    lastTrig_ = now; pendingTrig_ = true; trigEnvStart_ = now;
+    LOGI("us", "external presence trigger");
+  }
+  was = active;
+}

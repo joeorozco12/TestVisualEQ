@@ -15,6 +15,7 @@ class Ultrasonic {
   float reactivity() const { return react_; }        // 0..1 for effects
   uint32_t cooldownRemainingMs(uint32_t now) const;
   void simulateTrigger(uint32_t now);                // from web/MQTT "scare" button
+  void externalPresence(bool active, uint32_t now);  // PIR etc.: triggers through the same cooldown
  private:
   static void IRAM_ATTR echoIsr(void* arg);
   void ping();
