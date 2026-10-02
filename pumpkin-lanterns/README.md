@@ -40,6 +40,8 @@ flowchart LR
 
 ## Wiring / pin assignment (ESP32 DevKit, classic WROOM)
 
+Point-to-point build order with part pinouts: [docs/hookup.md](docs/hookup.md).
+
 | Signal | GPIO | Notes |
 |---|---|---|
 | LED data | 27 | → 74AHCT125 (5 V side) → 330 Ω → grid DIN. 1000 µF ≥6.3 V across grid 5 V/GND, as close to the grid as possible. Keep data lead < 15 cm before the shifter. |
@@ -96,7 +98,7 @@ pumpkin-lanterns/
 ├── src/net/                  net_manager (WiFi FSM, web, MQTT, UDP sync, leader election) · web_page.h · commands.h
 ├── src/bench/                bench_leds / ultrasonic / light / sun / audio / net / power
 ├── data/sounds/              put scare1.wav here, copy to the SD card
-└── docs/                     bringup.md (test plan) · power.md (budget, drop, enclosure)
+└── docs/                     hookup.md (point-to-point wiring) · bringup.md (test plan) · power.md (budget, drop, enclosure)
 ```
 
 ## Design choices (one line each)
