@@ -5,3 +5,4 @@
 #define MQTT_HOST       "192.168.1.10"   // "" = disabled at runtime
 #define MQTT_USER       ""
 #define MQTT_PASSWORD   ""
+#define OTA_PASSWORD    "pumpkin"        // ArduinoOTA auth; "" = no auth

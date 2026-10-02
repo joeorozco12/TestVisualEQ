@@ -157,3 +157,90 @@ struct NodeMacEntry { uint8_t mac[6]; uint8_t id; const char* name; };
 #define WDT_TIMEOUT_S           12     // task watchdog on loop + net task (net task may block ~9 s on MQTT connect)
 #define LOOP_OVERRUN_WARN_MS    100    // log if a loop iteration exceeds this
 #define HEAP_MIN_FREE_WARN      20000
+
+// =============================================================================
+// Feature additions (round 2)
+// =============================================================================
+
+// ---- Fleet choreography -------------------------------------------------------
+// Each node learns its slot (0..N-1, by ascending node id) from the sync beacons.
+// Travelling effects use slot * SYNC_WAVE_STEP_MS as their per-node delay.
+#define SYNC_WAVE_STEP_MS       350
+
+// ---- Scare escalation ---------------------------------------------------------
+// Triggers inside the window climb a level; level resets after the window idles.
+struct ScareLevel { const char* effect; uint32_t durationMs; bool sound; };
+#define SCARE_ESCALATION_WINDOW_MS 60000
+#define SCARE_LEVELS            { {"haunted", 2500, false}, {"eyes", 5000, true}, {"wakeup", 6000, true} }
+// Neighbours of a triggered node pre-arm: reactivity floor + eyes glance toward it.
+#define SCARE_ALERT_MS          10000
+#define SCARE_ALERT_FLOOR       0.45f
+
+// ---- Sounds -------------------------------------------------------------------
+#define SCARE_SOUND_PREFIX      "/sounds/scare"   // random pick among files starting with this
+#define AMBIENT_SOUND_PATH      "/sounds/ambient.wav"  // loops while lit; "" = none; missing file = silently skipped
+
+// ---- Grid text scroller ---------------------------------------------------------
+#define TEXT_MESSAGE            "BOO"
+#define TEXT_SCROLL_MS          140
+
+// ---- Weather bias (Open-Meteo, no API key) -------------------------------------
+#define WEATHER_ENABLED         true
+#define WEATHER_PERIOD_MS       1800000UL
+#define WEATHER_HOST            "api.open-meteo.com"
+#define WEATHER_WIND_FULL_KMH   30.0f   // wind at which candle gusts are at maximum
+#define WEATHER_RAIN_FULL_MM    2.0f    // precipitation (mm/h) at which lightning bias is maximum
+#define WEATHER_LIGHTNING_BIAS  0.5f    // probability a rotation step jumps to "lightning" at full rain
+
+// ---- Scheduled scenes -------------------------------------------------------------
+// Evaluated once a minute from local time. Entry with the latest start <= now wins;
+// wraps past midnight. Without a valid clock, the entry marked default (hh=255) applies.
+struct SceneDef { uint8_t hh, mm; const char* name; uint8_t brightness; bool scares; uint8_t playlist; };
+#define PLAYLIST_FRIENDLY       { "candle", "breathe", "rainbow", "sparkle", "wipe", "text" }
+#define PLAYLIST_HAUNTED        { "candle", "ember", "haunted", "fire", "eyes", "lightning", "heartbeat", "chase", "sparkle" }
+#define SCENE_TABLE             { {255, 0, "default",  140, true,  1}, \
+                                  {17,  0, "friendly", 120, false, 0}, \
+                                  {20,  0, "haunted",  160, true,  1} }
+
+// ---- Idle sleep -------------------------------------------------------------------
+#define IDLE_SLEEP_ENABLED      true
+#define IDLE_SLEEP_AFTER_HOUR   0        // local hour after which idle may engage (0 = midnight)
+#define IDLE_SLEEP_BEFORE_HOUR  5        // and before this hour
+#define IDLE_SLEEP_NO_TRIGGER_MS 1800000UL
+#define IDLE_SLEEP_EFFECT       "ember"
+#define IDLE_SLEEP_BRIGHTNESS   40
+#define IDLE_WAKE_MS            300000UL // full brightness for this long after a trigger
+
+// ---- OTA ----------------------------------------------------------------------------
+#define OTA_ENABLED             true     // pio run -t upload --upload-port pumpkin-<id>.local  (password in secrets.h)
+
+// ---- Microphone envelope (optional, ADC1) ----------------------------------------------
+#define MIC_ENABLED             false
+#define MIC_PIN                 35       // electret + amp or MEMS analog out, biased ~1.65 V
+#define MIC_ATTACK              0.4f
+#define MIC_DECAY               0.02f
+#define MIC_GAIN                1.2f     // envelope -> reactivity multiplier
+#define MIC_FLOOR_ADAPT         0.001f   // noise floor tracking rate
+
+// ---- PIR (optional second presence source) -------------------------------------------
+#define PIR_ENABLED             false
+#define PIR_PIN                 14
+#define PIR_REACTIVITY          0.5f     // reactivity while PIR is high (no distance available)
+
+// ---- VBUS telemetry (optional, ADC1 via 2:1 divider) -----------------------------------
+#define VBUS_SENSE_ENABLED      false
+#define VBUS_SENSE_PIN          36       // VP; 100k/100k divider from the 5 V star point
+#define VBUS_DIVIDER            2.0f
+#define VBUS_DIM_MV             4600     // below: brightness cap x0.6
+#define VBUS_CRIT_MV            4300     // below: ember only, cap x0.3
+
+// ---- Home Assistant MQTT discovery ---------------------------------------------------------
+#define HA_DISCOVERY            true
+#define HA_PREFIX               "homeassistant"
+
+// ---- Captive-portal provisioning -------------------------------------------------------------
+// Boot with no stored credentials (or BOOT held for 3 s at power-up) -> AP "pumpkin-<id>-setup"
+// -> http://192.168.4.1/ to enter WiFi + MQTT. Stored in NVS. secrets.h values are the defaults.
+#define PORTAL_ENABLED          true
+#define PORTAL_AP_PASS          "pumpkin123"
+#define PORTAL_HOLD_MS          3000
