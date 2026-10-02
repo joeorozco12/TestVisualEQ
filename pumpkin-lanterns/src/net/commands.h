@@ -4,12 +4,12 @@
 // Commands flow: (web | MQTT | UDP sync | button) -> queue -> main loop applies.
 // Local-origin commands are rebroadcast over UDP so every node follows.
 struct Command {
-  enum Type : uint8_t { NONE = 0, EFFECT, NEXT, BRIGHTNESS, MODE, SCARE, SPEED, HUE, ROTATE, PLAY, VOLUME, REBOOT };
+  enum Type : uint8_t { NONE = 0, EFFECT, NEXT, BRIGHTNESS, MODE, SCARE, SPEED, HUE, ROTATE, PLAY, VOLUME, REBOOT, TEXT, AMBIENT, PORTAL };
   Type type = NONE;
-  int32_t value = 0;          // brightness / mode (0 auto,1 on,2 off) / speed / hue / rotate / volume*100 / scare: 1=with sound
+  int32_t value = 0;          // brightness / mode (0 auto,1 on,2 off) / speed / hue / rotate / volume*100 / scare: level (bit7 = with sound) / ambient on-off
   char str[32] = {0};         // effect name / sound path
   uint8_t origin = 0;         // 0 = local, else node id of sender
-  uint16_t aux = 0;           // sync beacons: leader's PRNG seed
+  uint16_t aux = 0;           // sync beacons: leader's PRNG seed; scare: sender's fleet slot
 };
 
 // Snapshot of what the node is doing, for the web UI / MQTT / sync beacons.
@@ -26,4 +26,11 @@ struct NodeState {
   bool usHealthy = false, lightHealthy = false, audioOk = false, playing = false;
   uint32_t ledMilliamps = 0;
   time_t nextSunset = 0, nextSunrise = 0;
+  // round 2
+  uint8_t slot = 0, fleet = 1, scareLevel = 0;
+  bool idle = false, alert = false, scaresEnabled = true;
+  char scene[12] = "default";
+  uint16_t vbusMv = 0;
+  float mic = 0, wind = 0, rain = 0;
+  char text[24] = "";
 };
